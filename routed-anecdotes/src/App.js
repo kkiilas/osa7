@@ -42,30 +42,28 @@ const App = () => {
     dispatch(setNotification(`A new anecdote ${anecdote.content} created!`))
   }
 
-  // const anecdoteById = (id) =>
-  //   anecdotes.find(a => a.id === id)
+  const anecdoteById = (id) =>
+    anecdotes.find(a => a.id === id)
 
-  // const vote = (id) => {
-  //   const anecdote = anecdoteById(id)
+  const vote = (id) => {
+    const anecdote = anecdoteById(id)
 
-  //   const voted = {
-  //     ...anecdote,
-  //     votes: anecdote.votes + 1
-  //   }
+    const voted = {
+      ...anecdote,
+      votes: anecdote.votes + 1
+    }
 
-  //   setAnecdotes(anecdotes.map(a => a.id === id ? voted : a))
-  // }
+    setAnecdotes(anecdotes.map(a => a.id === id ? voted : a))
+    dispatch(setNotification(`You voted for ${anecdote.content}.`))
+  }
 
   return (
     <div className='container text-light'>
       <h1>Software anecdotes</h1>
-      <Menu
-        addNew={addNew}
-        anecdotes={anecdotes}
-      />
+      <Menu />
       <Notification />
       <Routes>
-        <Route path="/anecdotes/:id" element={<Anecdote anecdote={anecdote} />} />
+        <Route path="/anecdotes/:id" element={<Anecdote anecdote={anecdote} vote={vote} />} />
         <Route path="/" element={<AnecdoteList anecdotes={anecdotes} />} />
         <Route path="/create" element={<CreateNew addNew={addNew} />} />
         <Route path="/about" element={<About />} />
