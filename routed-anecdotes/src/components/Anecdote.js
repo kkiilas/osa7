@@ -8,16 +8,18 @@ const Anecdote = ({ anecdote, vote }) => {
 
   return (
     <div>
-      <h2>{anecdote.content} by {anecdote.author}</h2>
-      <p>has {anecdote.votes} votes {' '}
-        <button
-          className='btn btn-info'
-          onClick={handleVote}>
+      <h2>
+        {anecdote.content} by {anecdote.author}
+      </h2>
+      <p>
+        has {anecdote.votes} votes
+        <button className="btn btn-outline-info ms-1" onClick={handleVote}>
           Vote
         </button>
       </p>
-      <p>For more info, see {' '}
-        <a className='link-info' href={anecdote.info}>
+      <p>
+        For more info, see
+        <a className="link-info ms-1" href={anecdote.info}>
           {anecdote.info}
         </a>
       </p>

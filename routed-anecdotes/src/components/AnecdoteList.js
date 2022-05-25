@@ -7,9 +7,13 @@ const AnecdoteList = ({ anecdotes }) => {
     <div>
       <h2>Anecdotes</h2>
       <ul>
-        {anecdotes.map(anecdote => <li key={anecdote.id}>
-          <Link className='link-info' to={`/anecdotes/${anecdote.id}`}>{anecdote.content}</Link>
-        </li>)}
+        {anecdotes.map((anecdote) => (
+          <li key={anecdote.id}>
+            <Link className="link-info" to={`/anecdotes/${anecdote.id}`}>
+              {anecdote.content}
+            </Link>
+          </li>
+        ))}
       </ul>
     </div>
   )

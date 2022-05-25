@@ -9,10 +9,13 @@ export const useField = (type) => {
 
   const reset = () => setValue('')
 
+  const className = 'bg-dark text-light border-info ms-1 mb-1'
+
   return {
     type,
     value,
     onChange,
-    reset
+    reset,
+    className
   }
 }

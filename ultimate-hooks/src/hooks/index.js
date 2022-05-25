@@ -33,7 +33,7 @@ export const useResource = (baseUrl) => {
       const resources = await getAll()
       setResources(resources)
     })()
-  }, [])
+  }, [baseUrl])
 
   const service = {
     create

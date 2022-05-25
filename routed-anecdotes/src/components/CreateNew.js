@@ -34,20 +34,22 @@ const CreateNew = ({ addNew }) => {
       <h2>Create a new anecdote</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          Content: <input {...content} />
+          Content:
+          <input {...content} />
         </div>
         <div>
-          Author: <input {...author} />
+          Author:
+          <input {...author} />
         </div>
         <div>
-          Url for more info: <input {...info} />
+          Url for more info:
+          <input {...info} />
         </div>
-        <button className='btn btn-info' style={float}>Create</button>
+        <button className="btn btn-outline-info" style={float}>
+          Create
+        </button>
       </form>
-      <button
-        className='btn btn-info ms-1'
-        onClick={handleClick}
-      >
+      <button className="btn btn-outline-info ms-1" onClick={handleClick}>
         Reset
       </button>
     </div>

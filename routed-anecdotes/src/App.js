@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import {
-  Routes, Route, useMatch
-} from 'react-router-dom'
+import { Routes, Route, useMatch } from 'react-router-dom'
 import About from './components/About'
 import Anecdote from './components/Anecdote'
 import AnecdoteList from './components/AnecdoteList'
@@ -33,7 +31,7 @@ const App = () => {
 
   const match = useMatch('/anecdotes/:id')
   const anecdote = match
-    ? anecdotes.find(anecdote => anecdote.id === Number(match.params.id))
+    ? anecdotes.find((anecdote) => anecdote.id === Number(match.params.id))
     : null
 
   const addNew = (anecdote) => {
@@ -42,8 +40,7 @@ const App = () => {
     dispatch(setNotification(`A new anecdote ${anecdote.content} created!`))
   }
 
-  const anecdoteById = (id) =>
-    anecdotes.find(a => a.id === id)
+  const anecdoteById = (id) => anecdotes.find((a) => a.id === id)
 
   const vote = (id) => {
     const anecdote = anecdoteById(id)
@@ -53,22 +50,31 @@ const App = () => {
       votes: anecdote.votes + 1
     }
 
-    setAnecdotes(anecdotes.map(a => a.id === id ? voted : a))
+    setAnecdotes(anecdotes.map((a) => (a.id === id ? voted : a)))
     dispatch(setNotification(`You voted for ${anecdote.content}.`))
   }
 
   return (
-    <div className='container text-light'>
-      <h1>Software anecdotes</h1>
-      <Menu />
-      <Notification />
-      <Routes>
-        <Route path="/anecdotes/:id" element={<Anecdote anecdote={anecdote} vote={vote} />} />
-        <Route path="/" element={<AnecdoteList anecdotes={anecdotes} />} />
-        <Route path="/create" element={<CreateNew addNew={addNew} />} />
-        <Route path="/about" element={<About />} />
-      </Routes>
-      <Footer />
+    <div className="container bg-info">
+      <div className="d-flex bg-dark vh-100 p-5">
+        <div className="d-grid">
+          <div>
+            <h1>Software anecdotes</h1>
+            <Menu />
+            <Notification />
+          </div>
+          <Routes>
+            <Route
+              path="/anecdotes/:id"
+              element={<Anecdote anecdote={anecdote} vote={vote} />}
+            />
+            <Route path="/" element={<AnecdoteList anecdotes={anecdotes} />} />
+            <Route path="/create" element={<CreateNew addNew={addNew} />} />
+            <Route path="/about" element={<About />} />
+          </Routes>
+          <Footer />
+        </div>
+      </div>
     </div>
   )
 }
